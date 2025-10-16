@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Indigenous Art Atlas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-map-marked-alt"></i>
+                <span>Indigenous Art Atlas</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="browse.html" class="nav-link">Browse Art</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="guidelines.html" class="nav-link">Guidelines</a>
+                <a href="ethics.html" class="nav-link">Ethics</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+            </nav>
+            <div class="nav-auth">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="register.html" class="btn btn-primary">Register</a>
+            </div>
+            <div class="nav-user" style="display: none;">
+                <div class="user-dropdown">
+                    <button class="user-button">
+                        <i class="fas fa-user"></i>
+                        <span class="username"></span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                        <a href="submit-art.html"><i class="fas fa-plus"></i> Submit Art</a>
+                        <div class="admin-link" style="display: none;">
+                            <a href="admin.html"><i class="fas fa-cog"></i> Admin Panel</a>
+                        </div>
+                        <hr>
+                        <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Content -->
+    <main class="contact-main">
+        <!-- Hero Section -->
+        <section class="page-hero">
+            <div class="container">
+                <h1>Contact Us</h1>
+                <p class="hero-subtitle">Get in touch with the Indigenous Art Atlas team</p>
+            </div>
+        </section>
+
+        <!-- Contact Content -->
+        <section class="contact-content">
+            <div class="container">
+                <div class="contact-grid">
+                    <!-- Contact Form -->
+                    <div class="contact-form-section">
+                        <h2>Send us a Message</h2>
+                        <p>Whether you have questions, feedback, or want to report an issue, we're here to help.</p>
+
+                        <form id="contact-form" class="contact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="contact-name">Name *</label>
+                                    <input type="text" id="contact-name" name="name" required placeholder="Your full name">
+                                    <div class="error-message" id="name-error"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-email">Email *</label>
+                                    <input type="email" id="contact-email" name="email" required placeholder="your.email@example.com">
+                                    <div class="error-message" id="email-error"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contact-subject">Subject *</label>
+                                <select id="contact-subject" name="subject" required>
+                                    <option value="">Select a subject</option>
+                                    <option value="general">General Inquiry</option>
+                                    <option value="submission">Submission Question</option>
+                                    <option value="technical">Technical Issue</option>
+                                    <option value="content">Content Concern</option>
+                                    <option value="partnership">Partnership Opportunity</option>
+                                    <option value="cultural">Cultural Consultation</option>
+                                    <option value="removal">Content Removal Request</option>
+                                    <option value="feedback">Feedback</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <div class="error-message" id="subject-error"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contact-message">Message *</label>
+                                <textarea id="contact-message" name="message" rows="6" required placeholder="Please describe your inquiry in detail..."></textarea>
+                                <div class="error-message" id="message-error"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contact-organization">Organization (Optional)</label>
+                                <input type="text" id="contact-organization" name="organization" placeholder="Your organization or institution">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="contact-updates" name="updates">
+                                    <span class="checkmark"></span>
+                                    I would like to receive updates about the Indigenous Art Atlas project
+                                </label>
+                            </div>
+
+                            <div class="form-group cultural-note">
+                                <div class="note-card">
+                                    <i class="fas fa-info-circle"></i>
+                                    <p><strong>Cultural Consultation:</strong> If your inquiry involves cultural sensitivity, traditional knowledge, or community concerns, please provide as much context as possible to help us respond appropriately.</p>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-full">
+                                <span class="btn-text">Send Message</span>
+                                <span class="btn-loading" style="display: none;">
+                                    <i class="fas fa-spinner fa-spin"></i> Sending...
+                                </span>
+                            </button>
+                        </form>
+
+                        <div class="form-success" id="contact-success" style="display: none;">
+                            <div class="success-card">
+                                <i class="fas fa-check-circle"></i>
+                                <h3>Message Sent Successfully!</h3>
+                                <p>Thank you for contacting us. We'll respond to your inquiry within 2-3 business days.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div class="contact-info-section">
+                        <h2>Other Ways to Reach Us</h2>
+
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="method-info">
+                                    <h3>Email</h3>
+                                    <p>info@indigenousartatlas.org</p>
+                                    <small>We respond within 2-3 business days</small>
+                                </div>
+                            </div>
+
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="method-info">
+                                    <h3>Cultural Concerns</h3>
+                                    <p>cultural@indigenousartatlas.org</p>
+                                    <small>For sensitive cultural matters</small>
+                                </div>
+                            </div>
+
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-flag"></i>
+                                </div>
+                                <div class="method-info">
+                                    <h3>Report Content</h3>
+                                    <p>reports@indigenousartatlas.org</p>
+                                    <small>For inappropriate or concerning content</small>
+                                </div>
+                            </div>
+
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <div class="method-info">
+                                    <h3>Partnerships</h3>
+                                    <p>partnerships@indigenousartatlas.org</p>
+                                    <small>For collaboration opportunities</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ Section -->
+                        <div class="faq-section">
+                            <h3>Frequently Asked Questions</h3>
+                            <div class="faq-items">
+                                <div class="faq-item">
+                                    <button class="faq-question" onclick="toggleFAQ(this)">
+                                        <span>How long does it take to review submissions?</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                    <div class="faq-answer">
+                                        <p>Most submissions are reviewed within 3-5 business days. Complex or culturally sensitive submissions may require additional time for proper consultation and review.</p>
+                                    </div>
+                                </div>
+
+                                <div class="faq-item">
+                                    <button class="faq-question" onclick="toggleFAQ(this)">
+                                        <span>Can I request removal of content?</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                    <div class="faq-answer">
+                                        <p>Yes, we respect requests for content removal, especially from indigenous community members or cultural authorities. Contact us with details about the specific content and your concerns.</p>
+                                    </div>
+                                </div>
+
+                                <div class="faq-item">
+                                    <button class="faq-question" onclick="toggleFAQ(this)">
+                                        <span>How do you ensure cultural sensitivity?</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                    <div class="faq-answer">
+                                        <p>We work with cultural consultants, maintain ongoing relationships with indigenous communities, and have comprehensive review processes. See our <a href="ethics.html">Ethical Considerations</a> page for more details.</p>
+                                    </div>
+                                </div>
+
+                                <div class="faq-item">
+                                    <button class="faq-question" onclick="toggleFAQ(this)">
+                                        <span>Can institutions partner with you?</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                    <div class="faq-answer">
+                                        <p>We welcome partnerships with museums, cultural institutions, educational organizations, and indigenous communities. Contact us at partnerships@indigenousartatlas.org to discuss collaboration opportunities.</p>
+                                    </div>
+                                </div>
+
+                                <div class="faq-item">
+                                    <button class="faq-question" onclick="toggleFAQ(this)">
+                                        <span>Is this platform commercial?</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                    <div class="faq-answer">
+                                        <p>No, the Indigenous Art Atlas is strictly non-commercial. We do not permit any commercial use of our platform or content. Our mission is purely educational and cultural preservation.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Response Times -->
+                        <div class="response-times">
+                            <h3>Expected Response Times</h3>
+                            <div class="response-grid">
+                                <div class="response-item">
+                                    <strong>General Inquiries:</strong>
+                                    <span>2-3 business days</span>
+                                </div>
+                                <div class="response-item">
+                                    <strong>Technical Issues:</strong>
+                                    <span>1-2 business days</span>
+                                </div>
+                                <div class="response-item">
+                                    <strong>Cultural Concerns:</strong>
+                                    <span>1 business day</span>
+                                </div>
+                                <div class="response-item">
+                                    <strong>Content Reports:</strong>
+                                    <span>24 hours</span>
+                                </div>
+                                <div class="response-item">
+                                    <strong>Removal Requests:</strong>
+                                    <span>24 hours</span>
+                                </div>
+                                <div class="response-item">
+                                    <strong>Partnership Inquiries:</strong>
+                                    <span>5-7 business days</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Resources -->
+                <div class="additional-resources">
+                    <h2>Additional Resources</h2>
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <i class="fas fa-book"></i>
+                            <h3>Usage Guidelines</h3>
+                            <p>Comprehensive guidelines for participating in our community</p>
+                            <a href="guidelines.html" class="btn btn-outline">Read Guidelines</a>
+                        </div>
+                        <div class="resource-card">
+                            <i class="fas fa-balance-scale"></i>
+                            <h3>Ethical Framework</h3>
+                            <p>Our commitment to ethical practices and cultural sensitivity</p>
+                            <a href="ethics.html" class="btn btn-outline">Learn More</a>
+                        </div>
+                        <div class="resource-card">
+                            <i class="fas fa-question-circle"></i>
+                            <h3>Help Center</h3>
+                            <p>Step-by-step guides and tutorials for using our platform</p>
+                            <a href="#" class="btn btn-outline">Get Help</a>
+                        </div>
+                        <div class="resource-card">
+                            <i class="fas fa-users"></i>
+                            <h3>Community Forum</h3>
+                            <p>Connect with other community members and share experiences</p>
+                            <a href="#" class="btn btn-outline">Join Discussion</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Emergency Contact -->
+                <div class="emergency-contact">
+                    <div class="emergency-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h3>Urgent Cultural or Legal Concerns</h3>
+                        <p>If you have urgent concerns about culturally inappropriate content, legal violations, or sensitive cultural material that requires immediate attention, please contact us immediately.</p>
+                        <div class="emergency-actions">
+                            <a href="mailto:urgent@indigenousartatlas.org" class="btn btn-danger">
+                                <i class="fas fa-envelope"></i> urgent@indigenousartatlas.org
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Indigenous Art Atlas</h4>
+                    <p>Respectfully documenting and sharing indigenous art forms worldwide</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="browse.html">Browse Art</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="guidelines.html">Usage Guidelines</a></li>
+                        <li><a href="ethics.html">Ethical Considerations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="register.html">Join Us</a></li>
+                        <li><a href="submit-art.html">Submit Art</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cultural Guidelines</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Indigenous Art Atlas. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

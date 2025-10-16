@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Art - Indigenous Art Atlas</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-map-marked-alt"></i>
+                <span>Indigenous Art Atlas</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="browse.html" class="nav-link">Browse Art</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="guidelines.html" class="nav-link">Guidelines</a>
+                <a href="ethics.html" class="nav-link">Ethics</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <div class="nav-user">
+                <div class="user-dropdown">
+                    <button class="user-button">
+                        <i class="fas fa-user"></i>
+                        <span class="username"></span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                        <a href="submit-art.html" class="active"><i class="fas fa-plus"></i> Submit Art</a>
+                        <div class="admin-link" style="display: none;">
+                            <a href="admin.html"><i class="fas fa-cog"></i> Admin Panel</a>
+                        </div>
+                        <hr>
+                        <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Submit Art Form -->
+    <main class="submit-main">
+        <div class="container">
+            <div class="form-header">
+                <h1>Submit Indigenous Art</h1>
+                <p>Share indigenous art with our community. Please ensure you have proper permissions and follow our cultural sensitivity guidelines.</p>
+            </div>
+
+            <form id="submit-art-form" class="submit-form">
+                <!-- Step 1: Art Details -->
+                <div class="form-section active" id="step-1">
+                    <div class="step-header">
+                        <h2><i class="fas fa-info-circle"></i> Art Details</h2>
+                        <div class="step-indicator">Step 1 of 4</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="art-title">Art Title *</label>
+                        <input type="text" id="art-title" name="art-title" required placeholder="Enter the title or name of the artwork">
+                        <div class="error-message" id="art-title-error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="art-description">Description *</label>
+                        <textarea id="art-description" name="art-description" rows="6" required placeholder="Provide a detailed description of the artwork, its significance, cultural context, and any historical information..."></textarea>
+                        <div class="error-message" id="art-description-error"></div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="art-type">Art Type *</label>
+                            <select id="art-type" name="art-type" required>
+                                <option value="">Select art type</option>
+                                <option value="cave-art">Cave Art</option>
+                                <option value="rock-art">Rock Art</option>
+                                <option value="mural">Mural</option>
+                                <option value="sculpture">Sculpture</option>
+                                <option value="textile">Textile</option>
+                                <option value="pottery">Pottery</option>
+                                <option value="carving">Carving</option>
+                                <option value="painting">Painting</option>
+                                <option value="installation">Installation</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <div class="error-message" id="art-type-error"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="art-period">Period *</label>
+                            <select id="art-period" name="art-period" required>
+                                <option value="">Select period</option>
+                                <option value="ancient">Ancient (Pre-1500)</option>
+                                <option value="historical">Historical (1500-1900)</option>
+                                <option value="modern">Modern (1900-1980)</option>
+                                <option value="contemporary">Contemporary (1980-Present)</option>
+                            </select>
+                            <div class="error-message" id="art-period-error"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="art-condition">Condition/Quality Notes</label>
+                        <textarea id="art-condition" name="art-condition" rows="3" placeholder="Describe the current condition of the artwork, any damage, restoration work, or preservation concerns..."></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-primary" onclick="nextStep(2)">
+                            Next: Artist Information <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Artist Information -->
+                <div class="form-section" id="step-2">
+                    <div class="step-header">
+                        <h2><i class="fas fa-user"></i> Artist Information</h2>
+                        <div class="step-indicator">Step 2 of 4</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Artist Attribution</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="artist-attribution" value="unknown" checked>
+                                <span class="radio-mark"></span>
+                                Artist Unknown
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="artist-attribution" value="known">
+                                <span class="radio-mark"></span>
+                                Known Artist
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="artist-attribution" value="self">
+                                <span class="radio-mark"></span>
+                                I am the Artist
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="artist-details" id="artist-details" style="display: none;">
+                        <div class="form-group">
+                            <label for="artist-name">Artist Name</label>
+                            <input type="text" id="artist-name" name="artist-name" placeholder="Enter the artist's name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="artist-info">Artist Information</label>
+                            <textarea id="artist-info" name="artist-info" rows="3" placeholder="Provide any known information about the artist, their background, cultural affiliation, etc."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="cultural-note">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <strong>Cultural Sensitivity Note:</strong> Please ensure you have appropriate permissions to share this artwork and respect any cultural protocols around attribution and representation.
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" onclick="prevStep(1)">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep(3)">
+                            Next: Location <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Location -->
+                <div class="form-section" id="step-3">
+                    <div class="step-header">
+                        <h2><i class="fas fa-map-marker-alt"></i> Location Information</h2>
+                        <div class="step-indicator">Step 3 of 4</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location-description">Location Description *</label>
+                        <textarea id="location-description" name="location-description" rows="3" required placeholder="Describe the location where this art is found (e.g., 'Near the old bridge in the national park', 'Inside Gallery X')"></textarea>
+                        <div class="error-message" id="location-description-error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Location on Map *</label>
+                        <div class="map-picker">
+                            <div id="location-map"></div>
+                            <div class="map-instructions">
+                                <i class="fas fa-info-circle"></i>
+                                Click on the map to set the location marker. You can drag the marker to adjust the position.
+                            </div>
+                        </div>
+                        <div class="coordinates-display">
+                            <label>Coordinates:</label>
+                            <span id="selected-coordinates">Click on map to select location</span>
+                        </div>
+                        <div class="error-message" id="location-error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="location-sensitive" name="location-sensitive">
+                            <span class="checkmark"></span>
+                            This location is culturally sensitive or on private land
+                        </label>
+                        <div class="help-text">
+                            Checking this will flag the submission for admin review and may result in approximate rather than exact coordinates being displayed publicly.
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" onclick="prevStep(2)">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep(4)">
+                            Next: Images <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Images -->
+                <div class="form-section" id="step-4">
+                    <div class="step-header">
+                        <h2><i class="fas fa-camera"></i> Upload Images</h2>
+                        <div class="step-indicator">Step 4 of 4</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="art-images">Images *</label>
+                        <div class="file-upload-area" id="file-upload-area">
+                            <div class="upload-placeholder">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <h3>Drop images here or click to browse</h3>
+                                <p>Upload multiple high-quality images (JPEG, PNG)</p>
+                                <p>Maximum file size: 10MB per image</p>
+                            </div>
+                            <input type="file" id="art-images" name="art-images" multiple accept="image/*" required>
+                        </div>
+                        <div class="error-message" id="images-error"></div>
+                    </div>
+
+                    <div class="uploaded-images" id="uploaded-images">
+                        <!-- Uploaded images preview will appear here -->
+                    </div>
+
+                    <div class="image-guidelines">
+                        <h4>Image Guidelines:</h4>
+                        <ul>
+                            <li>Upload high-quality images that clearly show the artwork</li>
+                            <li>Include multiple angles if possible</li>
+                            <li>Ensure you have permission to photograph and share the artwork</li>
+                            <li>Respect any photography restrictions at the location</li>
+                        </ul>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" onclick="prevStep(3)">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <span class="btn-text">Submit for Review</span>
+                            <span class="btn-loading" style="display: none;">
+                                <i class="fas fa-spinner fa-spin"></i> Submitting...
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Form Progress -->
+                <div class="form-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <div class="progress-steps">
+                        <div class="progress-step active" id="progress-1">1</div>
+                        <div class="progress-step" id="progress-2">2</div>
+                        <div class="progress-step" id="progress-3">3</div>
+                        <div class="progress-step" id="progress-4">4</div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header success">
+                <i class="fas fa-check-circle"></i>
+                <h3>Submission Successful!</h3>
+            </div>
+            <div class="modal-body">
+                <p>Your artwork has been submitted successfully and is now pending review by our administrators.</p>
+                <p>You can track the status of your submission in your dashboard.</p>
+                <div class="modal-actions">
+                    <a href="dashboard.html" class="btn btn-primary">Go to Dashboard</a>
+                    <a href="submit-art.html" class="btn btn-outline">Submit Another</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Indigenous Art Atlas</h4>
+                    <p>Respectfully documenting and sharing indigenous art forms worldwide</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="browse.html">Browse Art</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="guidelines.html">Usage Guidelines</a></li>
+                        <li><a href="ethics.html">Ethical Considerations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="register.html">Join Us</a></li>
+                        <li><a href="submit-art.html">Submit Art</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cultural Guidelines</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Indigenous Art Atlas. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

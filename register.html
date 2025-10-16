@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Indigenous Art Atlas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-map-marked-alt"></i>
+                <span>Indigenous Art Atlas</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="browse.html" class="nav-link">Browse Art</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="guidelines.html" class="nav-link">Guidelines</a>
+                <a href="ethics.html" class="nav-link">Ethics</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <div class="nav-auth">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="register.html" class="btn btn-primary active">Register</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Registration Form Section -->
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-container">
+                <div class="auth-header">
+                    <h1>Join Our Community</h1>
+                    <p>Create your account to contribute to the Indigenous Art Atlas</p>
+                </div>
+
+                <form id="register-form" class="auth-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="first-name">First Name</label>
+                            <div class="input-group">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="first-name" name="first-name" required placeholder="First name">
+                            </div>
+                            <div class="error-message" id="first-name-error"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="last-name">Last Name</label>
+                            <div class="input-group">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="last-name" name="last-name" required placeholder="Last name">
+                            </div>
+                            <div class="error-message" id="last-name-error"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <div class="input-group">
+                            <i class="fas fa-at"></i>
+                            <input type="text" id="username" name="username" required placeholder="Choose a username">
+                        </div>
+                        <div class="error-message" id="username-error"></div>
+                        <div class="help-text">This will be displayed publicly on your submissions</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <div class="input-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="email" name="email" required placeholder="Enter your email">
+                        </div>
+                        <div class="error-message" id="email-error"></div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <div class="input-group">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="password" name="password" required placeholder="Create a password">
+                                <button type="button" class="password-toggle" onclick="togglePassword('password')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="error-message" id="password-error"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirm-password">Confirm Password</label>
+                            <div class="input-group">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="confirm-password" name="confirm-password" required placeholder="Confirm your password">
+                                <button type="button" class="password-toggle" onclick="togglePassword('confirm-password')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="error-message" id="confirm-password-error"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="user-type">Account Type</label>
+                        <div class="input-group">
+                            <i class="fas fa-users"></i>
+                            <select id="user-type" name="user-type" required>
+                                <option value="">Select account type</option>
+                                <option value="general">General Public</option>
+                                <option value="artist">Artist</option>
+                            </select>
+                        </div>
+                        <div class="help-text">Artists can link submissions to their profile and manage their artist information</div>
+                    </div>
+
+                    <div class="form-group artist-info" id="artist-info" style="display: none;">
+                        <label for="artist-bio">Artist Bio (Optional)</label>
+                        <textarea id="artist-bio" name="artist-bio" rows="3" placeholder="Tell us about your artistic background and work..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="terms-agreement" required>
+                            <span class="checkmark"></span>
+                            I agree to the <a href="guidelines.html" target="_blank">Usage Guidelines</a> and <a href="ethics.html" target="_blank">Ethical Considerations</a>
+                        </label>
+                        <div class="error-message" id="terms-error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="cultural-sensitivity">
+                            <span class="checkmark"></span>
+                            I understand the cultural sensitivity requirements and commit to respectful participation
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <span class="btn-text">Create Account</span>
+                        <span class="btn-loading" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i> Creating account...
+                        </span>
+                    </button>
+                </form>
+
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="login.html">Sign in here</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Indigenous Art Atlas</h4>
+                    <p>Respectfully documenting and sharing indigenous art forms worldwide</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="browse.html">Browse Art</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="guidelines.html">Usage Guidelines</a></li>
+                        <li><a href="ethics.html">Ethical Considerations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="register.html">Join Us</a></li>
+                        <li><a href="submit-art.html">Submit Art</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cultural Guidelines</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Indigenous Art Atlas. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

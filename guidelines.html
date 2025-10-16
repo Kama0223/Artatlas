@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usage Guidelines - Indigenous Art Atlas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-map-marked-alt"></i>
+                <span>Indigenous Art Atlas</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="browse.html" class="nav-link">Browse Art</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="guidelines.html" class="nav-link active">Guidelines</a>
+                <a href="ethics.html" class="nav-link">Ethics</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <div class="nav-auth">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="register.html" class="btn btn-primary">Register</a>
+            </div>
+            <div class="nav-user" style="display: none;">
+                <div class="user-dropdown">
+                    <button class="user-button">
+                        <i class="fas fa-user"></i>
+                        <span class="username"></span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                        <a href="submit-art.html"><i class="fas fa-plus"></i> Submit Art</a>
+                        <div class="admin-link" style="display: none;">
+                            <a href="admin.html"><i class="fas fa-cog"></i> Admin Panel</a>
+                        </div>
+                        <hr>
+                        <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Content -->
+    <main class="guidelines-main">
+        <!-- Hero Section -->
+        <section class="page-hero">
+            <div class="container">
+                <h1>Usage Guidelines</h1>
+                <p class="hero-subtitle">Guidelines for respectful participation in the Indigenous Art Atlas community</p>
+            </div>
+        </section>
+
+        <!-- Guidelines Content -->
+        <section class="guidelines-content">
+            <div class="container">
+                <div class="guidelines-nav">
+                    <h3>Quick Navigation</h3>
+                    <ul>
+                        <li><a href="#general-conduct">General Conduct</a></li>
+                        <li><a href="#submission-guidelines">Submission Guidelines</a></li>
+                        <li><a href="#cultural-sensitivity">Cultural Sensitivity</a></li>
+                        <li><a href="#image-requirements">Image Requirements</a></li>
+                        <li><a href="#location-guidelines">Location Guidelines</a></li>
+                        <li><a href="#moderation-process">Moderation Process</a></li>
+                        <li><a href="#community-standards">Community Standards</a></li>
+                        <li><a href="#consequences">Consequences</a></li>
+                    </ul>
+                </div>
+
+                <div class="guidelines-sections">
+                    <!-- General Conduct -->
+                    <section id="general-conduct" class="guideline-section">
+                        <h2><i class="fas fa-users"></i> General Conduct</h2>
+                        <div class="guideline-content">
+                            <h3>Expected Behavior</h3>
+                            <ul>
+                                <li>Treat all community members with respect and dignity</li>
+                                <li>Engage in constructive and meaningful discussions</li>
+                                <li>Respect diverse perspectives and cultural backgrounds</li>
+                                <li>Use appropriate language free from hate speech or discrimination</li>
+                                <li>Report inappropriate content or behavior to administrators</li>
+                            </ul>
+
+                            <h3>Prohibited Activities</h3>
+                            <ul>
+                                <li>Harassment, bullying, or intimidation of any kind</li>
+                                <li>Discriminatory language or behavior based on race, ethnicity, religion, gender, or cultural identity</li>
+                                <li>Spam, self-promotion, or commercial activities</li>
+                                <li>Sharing false or misleading information</li>
+                                <li>Attempting to circumvent moderation decisions</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Submission Guidelines -->
+                    <section id="submission-guidelines" class="guideline-section">
+                        <h2><i class="fas fa-upload"></i> Submission Guidelines</h2>
+                        <div class="guideline-content">
+                            <h3>Before You Submit</h3>
+                            <div class="important-note">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <strong>Important:</strong> Only submit artwork that you have permission to share publicly. This includes obtaining proper consent from artists, cultural authorities, or landowners.
+                            </div>
+
+                            <h3>What You Can Submit</h3>
+                            <ul>
+                                <li>Indigenous art in public spaces (with proper permissions)</li>
+                                <li>Art in museums or galleries (with institution consent)</li>
+                                <li>Your own indigenous artwork</li>
+                                <li>Historical pieces with proper documentation</li>
+                                <li>Community-approved cultural expressions</li>
+                            </ul>
+
+                            <h3>What You Cannot Submit</h3>
+                            <ul>
+                                <li>Sacred or ceremonial objects without explicit community approval</li>
+                                <li>Artwork from private collections without owner consent</li>
+                                <li>Images taken on private property without permission</li>
+                                <li>Culturally sensitive items that should remain private</li>
+                                <li>Reproductions or replicas presented as originals</li>
+                                <li>Copyright-protected contemporary works without permission</li>
+                            </ul>
+
+                            <h3>Required Information</h3>
+                            <ul>
+                                <li>Accurate title and description</li>
+                                <li>Correct cultural attribution when known</li>
+                                <li>Appropriate time period classification</li>
+                                <li>Location information (respecting sensitivity requirements)</li>
+                                <li>Source of permission to share the artwork</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Cultural Sensitivity -->
+                    <section id="cultural-sensitivity" class="guideline-section">
+                        <h2><i class="fas fa-heart"></i> Cultural Sensitivity</h2>
+                        <div class="guideline-content">
+                            <h3>Respectful Representation</h3>
+                            <ul>
+                                <li>Use appropriate terminology when describing indigenous cultures</li>
+                                <li>Avoid generalizations or stereotypes</li>
+                                <li>Credit artists and communities accurately when known</li>
+                                <li>Respect cultural protocols around sacred or sensitive content</li>
+                                <li>Acknowledge when information is incomplete or uncertain</li>
+                            </ul>
+
+                            <h3>Sacred and Sensitive Content</h3>
+                            <div class="sensitivity-warning">
+                                <i class="fas fa-shield-alt"></i>
+                                <div>
+                                    <h4>Special Considerations</h4>
+                                    <p>Some indigenous art may have religious, ceremonial, or cultural significance that requires special handling. When in doubt, consult with relevant cultural authorities before submitting.</p>
+                                </div>
+                            </div>
+
+                            <h3>Community Consultation</h3>
+                            <ul>
+                                <li>Engage with relevant indigenous communities when possible</li>
+                                <li>Respect community decisions about what should or should not be shared</li>
+                                <li>Understand that some art may be meant for specific audiences only</li>
+                                <li>Be open to feedback and corrections from community members</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Image Requirements -->
+                    <section id="image-requirements" class="guideline-section">
+                        <h2><i class="fas fa-camera"></i> Image Requirements</h2>
+                        <div class="guideline-content">
+                            <h3>Technical Specifications</h3>
+                            <ul>
+                                <li><strong>Format:</strong> JPEG or PNG files only</li>
+                                <li><strong>Size:</strong> Maximum 10MB per image</li>
+                                <li><strong>Resolution:</strong> Minimum 800x600 pixels recommended</li>
+                                <li><strong>Quality:</strong> Clear, well-lit, and in focus</li>
+                                <li><strong>Quantity:</strong> Multiple angles encouraged when appropriate</li>
+                            </ul>
+
+                            <h3>Photography Guidelines</h3>
+                            <ul>
+                                <li>Obtain permission before photographing artwork</li>
+                                <li>Respect any photography restrictions at the location</li>
+                                <li>Avoid flash photography that could damage artwork</li>
+                                <li>Include context shots when helpful for understanding</li>
+                                <li>Ensure images accurately represent colors and details</li>
+                            </ul>
+
+                            <h3>Privacy Considerations</h3>
+                            <ul>
+                                <li>Avoid including people in artwork photographs without consent</li>
+                                <li>Remove or blur any personal information visible in images</li>
+                                <li>Be mindful of location identifying features if anonymity is needed</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Location Guidelines -->
+                    <section id="location-guidelines" class="guideline-section">
+                        <h2><i class="fas fa-map-marker-alt"></i> Location Guidelines</h2>
+                        <div class="guideline-content">
+                            <h3>Location Sensitivity</h3>
+                            <div class="location-types">
+                                <div class="location-type">
+                                    <h4><i class="fas fa-globe"></i> Public Locations</h4>
+                                    <p>Artwork in public spaces, museums, or galleries can generally include specific location information.</p>
+                                </div>
+                                <div class="location-type">
+                                    <h4><i class="fas fa-eye-slash"></i> Sensitive Locations</h4>
+                                    <p>Sacred sites, private land, or culturally sensitive areas should use general region information only.</p>
+                                </div>
+                                <div class="location-type">
+                                    <h4><i class="fas fa-ban"></i> Protected Locations</h4>
+                                    <p>Some locations may need to remain completely anonymous for protection and preservation.</p>
+                                </div>
+                            </div>
+
+                            <h3>When to Mark as Sensitive</h3>
+                            <ul>
+                                <li>Sacred or ceremonial sites</li>
+                                <li>Private property or restricted areas</li>
+                                <li>Locations vulnerable to vandalism or damage</li>
+                                <li>Sites with ongoing cultural or legal disputes</li>
+                                <li>Areas where indigenous communities have requested privacy</li>
+                            </ul>
+
+                            <h3>Location Description Best Practices</h3>
+                            <ul>
+                                <li>Provide helpful context without compromising sensitivity</li>
+                                <li>Use landmarks or general areas when specific coordinates are inappropriate</li>
+                                <li>Include access information when publicly available</li>
+                                <li>Note any restrictions or special requirements for visiting</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Moderation Process -->
+                    <section id="moderation-process" class="guideline-section">
+                        <h2><i class="fas fa-gavel"></i> Moderation Process</h2>
+                        <div class="guideline-content">
+                            <h3>Review Process</h3>
+                            <ol>
+                                <li><strong>Submission:</strong> All submissions are reviewed before becoming public</li>
+                                <li><strong>Initial Review:</strong> Basic compliance check for guidelines and technical requirements</li>
+                                <li><strong>Cultural Review:</strong> Cultural sensitivity and appropriateness assessment</li>
+                                <li><strong>Decision:</strong> Approve, request modifications, or reject with explanation</li>
+                                <li><strong>Publication:</strong> Approved submissions become publicly visible</li>
+                            </ol>
+
+                            <h3>Review Timeline</h3>
+                            <ul>
+                                <li>Most submissions reviewed within 3-5 business days</li>
+                                <li>Complex or sensitive submissions may require additional time</li>
+                                <li>Submitters will be notified of the decision via email</li>
+                                <li>Appeals process available for rejected submissions</li>
+                            </ul>
+
+                            <h3>Moderation Criteria</h3>
+                            <ul>
+                                <li>Compliance with usage guidelines</li>
+                                <li>Cultural sensitivity and appropriateness</li>
+                                <li>Accuracy of information provided</li>
+                                <li>Image quality and relevance</li>
+                                <li>Proper permissions and attributions</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Community Standards -->
+                    <section id="community-standards" class="guideline-section">
+                        <h2><i class="fas fa-handshake"></i> Community Standards</h2>
+                        <div class="guideline-content">
+                            <h3>Building a Respectful Community</h3>
+                            <ul>
+                                <li>Welcome newcomers and help them understand our guidelines</li>
+                                <li>Provide constructive feedback on submissions when appropriate</li>
+                                <li>Share knowledge respectfully and cite sources</li>
+                                <li>Engage in meaningful discussions about art and culture</li>
+                                <li>Report violations of guidelines to moderators</li>
+                            </ul>
+
+                            <h3>Intellectual Property Respect</h3>
+                            <ul>
+                                <li>Respect copyright and cultural intellectual property rights</li>
+                                <li>Provide proper attribution to artists and communities</li>
+                                <li>Understand that some knowledge may be considered proprietary</li>
+                                <li>Avoid unauthorized reproduction or commercial use of submitted content</li>
+                            </ul>
+
+                            <h3>Educational Purpose</h3>
+                            <ul>
+                                <li>Focus on educational and cultural preservation goals</li>
+                                <li>Share context and historical information when known</li>
+                                <li>Correct misinformation respectfully and provide sources</li>
+                                <li>Encourage learning about indigenous cultures and histories</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Consequences -->
+                    <section id="consequences" class="guideline-section">
+                        <h2><i class="fas fa-exclamation-circle"></i> Consequences</h2>
+                        <div class="guideline-content">
+                            <h3>Violation Response</h3>
+                            <div class="consequence-levels">
+                                <div class="consequence-level">
+                                    <h4><i class="fas fa-info-circle"></i> Minor Violations</h4>
+                                    <p>Warning, guidance, and opportunity to correct the issue</p>
+                                </div>
+                                <div class="consequence-level">
+                                    <h4><i class="fas fa-exclamation-triangle"></i> Moderate Violations</h4>
+                                    <p>Temporary restriction of submission privileges or account suspension</p>
+                                </div>
+                                <div class="consequence-level">
+                                    <h4><i class="fas fa-ban"></i> Severe Violations</h4>
+                                    <p>Permanent account suspension or ban from the platform</p>
+                                </div>
+                            </div>
+
+                            <h3>Appeals Process</h3>
+                            <ul>
+                                <li>Users may appeal moderation decisions through our contact form</li>
+                                <li>Appeals will be reviewed by a different moderator when possible</li>
+                                <li>Additional context or evidence may be considered</li>
+                                <li>Final decisions will be communicated within 7 business days</li>
+                            </ul>
+
+                            <h3>Content Removal</h3>
+                            <ul>
+                                <li>Content that violates guidelines will be removed</li>
+                                <li>Users will be notified of removals with explanations</li>
+                                <li>Opportunities for revision and resubmission when appropriate</li>
+                                <li>Community members may request removal of culturally inappropriate content</li>
+                            </ul>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Contact for Questions -->
+                <div class="guidelines-contact">
+                    <div class="contact-card">
+                        <h3><i class="fas fa-question-circle"></i> Questions about Guidelines?</h3>
+                        <p>If you have questions about these guidelines or need clarification on any policy, please don't hesitate to contact us.</p>
+                        <a href="contact.html" class="btn btn-primary">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Indigenous Art Atlas</h4>
+                    <p>Respectfully documenting and sharing indigenous art forms worldwide</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="browse.html">Browse Art</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="guidelines.html">Usage Guidelines</a></li>
+                        <li><a href="ethics.html">Ethical Considerations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="register.html">Join Us</a></li>
+                        <li><a href="submit-art.html">Submit Art</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cultural Guidelines</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Indigenous Art Atlas. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

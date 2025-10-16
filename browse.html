@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Art - Indigenous Art Atlas</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-map-marked-alt"></i>
+                <span>Indigenous Art Atlas</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="browse.html" class="nav-link active">Browse Art</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="guidelines.html" class="nav-link">Guidelines</a>
+                <a href="ethics.html" class="nav-link">Ethics</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <div class="nav-auth">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="register.html" class="btn btn-primary">Register</a>
+            </div>
+            <div class="nav-user" style="display: none;">
+                <div class="user-dropdown">
+                    <button class="user-button">
+                        <i class="fas fa-user"></i>
+                        <span class="username"></span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                        <a href="submit-art.html"><i class="fas fa-plus"></i> Submit Art</a>
+                        <div class="admin-link" style="display: none;">
+                            <a href="admin.html"><i class="fas fa-cog"></i> Admin Panel</a>
+                        </div>
+                        <hr>
+                        <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Browse Indigenous Art</h1>
+            <p>Discover and explore indigenous art from around the world</p>
+        </div>
+    </section>
+
+    <!-- Search and Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-controls">
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Search by title, artist, or description...">
+                    <button id="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                
+                <div class="filter-group">
+                    <div class="filter-item">
+                        <label for="art-type-filter">Art Type:</label>
+                        <select id="art-type-filter">
+                            <option value="">All Types</option>
+                            <option value="cave-art">Cave Art</option>
+                            <option value="mural">Mural</option>
+                            <option value="sculpture">Sculpture</option>
+                            <option value="textile">Textile</option>
+                            <option value="pottery">Pottery</option>
+                            <option value="rock-art">Rock Art</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-item">
+                        <label for="period-filter">Period:</label>
+                        <select id="period-filter">
+                            <option value="">All Periods</option>
+                            <option value="ancient">Ancient</option>
+                            <option value="historical">Historical</option>
+                            <option value="contemporary">Contemporary</option>
+                            <option value="modern">Modern</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-item">
+                        <label for="region-filter">Region:</label>
+                        <select id="region-filter">
+                            <option value="">All Regions</option>
+                            <option value="australia">Australia</option>
+                            <option value="north-america">North America</option>
+                            <option value="south-america">South America</option>
+                            <option value="africa">Africa</option>
+                            <option value="asia">Asia</option>
+                            <option value="europe">Europe</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-item">
+                        <label for="sort-filter">Sort By:</label>
+                        <select id="sort-filter">
+                            <option value="date-desc">Newest First</option>
+                            <option value="date-asc">Oldest First</option>
+                            <option value="title-asc">Title A-Z</option>
+                            <option value="title-desc">Title Z-A</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button id="clear-filters" class="btn btn-outline">Clear Filters</button>
+            </div>
+            
+            <div class="view-toggle">
+                <button id="grid-view" class="view-btn active"><i class="fas fa-th"></i> Grid</button>
+                <button id="list-view" class="view-btn"><i class="fas fa-list"></i> List</button>
+                <button id="map-view" class="view-btn"><i class="fas fa-map"></i> Map</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-section">
+        <div class="container">
+            <div class="results-header">
+                <div class="results-count">
+                    <span id="results-count">0</span> artworks found
+                </div>
+                <div class="loading-indicator" id="loading" style="display: none;">
+                    <i class="fas fa-spinner fa-spin"></i> Loading...
+                </div>
+            </div>
+            
+            <!-- Grid/List View -->
+            <div id="grid-container" class="results-grid">
+                <!-- Art entries will be populated by JavaScript -->
+            </div>
+            
+            <!-- Map View -->
+            <div id="map-container" class="browse-map" style="display: none;">
+                <div id="browse-map"></div>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="pagination" id="pagination">
+                <!-- Pagination will be populated by JavaScript -->
+            </div>
+            
+            <!-- Empty State -->
+            <div class="empty-state" id="empty-state" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h3>No artworks found</h3>
+                <p>Try adjusting your search criteria or filters</p>
+                <button onclick="clearAllFilters()" class="btn btn-primary">Clear All Filters</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Indigenous Art Atlas</h4>
+                    <p>Respectfully documenting and sharing indigenous art forms worldwide</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="browse.html">Browse Art</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="guidelines.html">Usage Guidelines</a></li>
+                        <li><a href="ethics.html">Ethical Considerations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="register.html">Join Us</a></li>
+                        <li><a href="submit-art.html">Submit Art</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cultural Guidelines</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Indigenous Art Atlas. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

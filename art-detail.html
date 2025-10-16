@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Detail - Indigenous Art Atlas</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-map-marked-alt"></i>
+                <span>Indigenous Art Atlas</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="browse.html" class="nav-link">Browse Art</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="guidelines.html" class="nav-link">Guidelines</a>
+                <a href="ethics.html" class="nav-link">Ethics</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <div class="nav-auth">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="register.html" class="btn btn-primary">Register</a>
+            </div>
+            <div class="nav-user" style="display: none;">
+                <div class="user-dropdown">
+                    <button class="user-button">
+                        <i class="fas fa-user"></i>
+                        <span class="username"></span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                        <a href="submit-art.html"><i class="fas fa-plus"></i> Submit Art</a>
+                        <div class="admin-link" style="display: none;">
+                            <a href="admin.html"><i class="fas fa-cog"></i> Admin Panel</a>
+                        </div>
+                        <hr>
+                        <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="index.html">Home</a>
+            <i class="fas fa-chevron-right"></i>
+            <a href="browse.html">Browse Art</a>
+            <i class="fas fa-chevron-right"></i>
+            <span id="art-title-breadcrumb">Art Detail</span>
+        </div>
+    </div>
+
+    <!-- Art Detail Content -->
+    <main class="art-detail-main">
+        <div class="container">
+            <div class="art-detail-content">
+                <!-- Image Gallery -->
+                <div class="art-gallery">
+                    <div class="main-image">
+                        <img id="main-art-image" src="" alt="Art piece" />
+                        <div class="image-counter">
+                            <span id="current-image">1</span> / <span id="total-images">1</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-gallery" id="thumbnail-gallery">
+                        <!-- Thumbnails will be populated by JavaScript -->
+                    </div>
+                    <div class="gallery-controls">
+                        <button id="prev-image" class="gallery-btn">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button id="next-image" class="gallery-btn">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Art Information -->
+                <div class="art-info">
+                    <div class="art-header">
+                        <h1 id="art-title">Loading...</h1>
+                        <div class="art-meta">
+                            <span class="art-type" id="art-type"></span>
+                            <span class="art-period" id="art-period"></span>
+                        </div>
+                    </div>
+
+                    <div class="art-description">
+                        <h3>Description</h3>
+                        <p id="art-description"></p>
+                    </div>
+
+                    <div class="art-details">
+                        <div class="detail-grid">
+                            <div class="detail-item">
+                                <label>Artist:</label>
+                                <span id="art-artist">Unknown</span>
+                            </div>
+                            <div class="detail-item">
+                                <label>Condition:</label>
+                                <span id="art-condition"></span>
+                            </div>
+                            <div class="detail-item">
+                                <label>Submitted by:</label>
+                                <span id="art-submitter"></span>
+                            </div>
+                            <div class="detail-item">
+                                <label>Date Added:</label>
+                                <span id="art-date"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="art-actions">
+                        <button class="btn btn-outline" onclick="addToCollection()">
+                            <i class="fas fa-bookmark"></i> Add to Collection
+                        </button>
+                        <button class="btn btn-outline" onclick="shareArt()">
+                            <i class="fas fa-share"></i> Share
+                        </button>
+                        <div class="logged-in-actions" style="display: none;">
+                            <button class="btn btn-danger" onclick="reportContent()">
+                                <i class="fas fa-flag"></i> Report
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Location Section -->
+            <div class="location-section">
+                <h2>Location</h2>
+                <div class="location-content">
+                    <div class="location-map">
+                        <div id="detail-map"></div>
+                    </div>
+                    <div class="location-info">
+                        <h4>Location Details</h4>
+                        <p id="location-description"></p>
+                        <div class="location-sensitivity" id="location-sensitivity">
+                            <i class="fas fa-info-circle"></i>
+                            <span>This location has been marked as culturally sensitive. Exact coordinates are not displayed.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Related Art -->
+            <div class="related-section">
+                <h2>Related Artworks</h2>
+                <div class="related-grid" id="related-artworks">
+                    <!-- Related artworks will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Report Modal -->
+    <div id="report-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Report Content</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="report-form">
+                    <div class="form-group">
+                        <label for="report-reason">Reason for reporting:</label>
+                        <select id="report-reason" required>
+                            <option value="">Select a reason</option>
+                            <option value="inappropriate">Inappropriate content</option>
+                            <option value="inaccurate">Inaccurate information</option>
+                            <option value="copyright">Copyright violation</option>
+                            <option value="cultural">Cultural insensitivity</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="report-details">Additional details:</label>
+                        <textarea id="report-details" rows="4" placeholder="Please provide more information about the issue..."></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" onclick="closeReportModal()">Cancel</button>
+                        <button type="submit" class="btn btn-danger">Submit Report</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Indigenous Art Atlas</h4>
+                    <p>Respectfully documenting and sharing indigenous art forms worldwide</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="browse.html">Browse Art</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="guidelines.html">Usage Guidelines</a></li>
+                        <li><a href="ethics.html">Ethical Considerations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="register.html">Join Us</a></li>
+                        <li><a href="submit-art.html">Submit Art</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cultural Guidelines</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Indigenous Art Atlas. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

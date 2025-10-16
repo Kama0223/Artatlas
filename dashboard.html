@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Indigenous Art Atlas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-map-marked-alt"></i>
+                <span>Indigenous Art Atlas</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="browse.html" class="nav-link">Browse Art</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="guidelines.html" class="nav-link">Guidelines</a>
+                <a href="ethics.html" class="nav-link">Ethics</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <div class="nav-user">
+                <div class="user-dropdown">
+                    <button class="user-button">
+                        <i class="fas fa-user"></i>
+                        <span class="username"></span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="dashboard.html" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                        <a href="submit-art.html"><i class="fas fa-plus"></i> Submit Art</a>
+                        <div class="admin-link" style="display: none;">
+                            <a href="admin.html"><i class="fas fa-cog"></i> Admin Panel</a>
+                        </div>
+                        <hr>
+                        <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <main class="dashboard-main">
+        <div class="container">
+            <!-- Dashboard Header -->
+            <div class="dashboard-header">
+                <div class="welcome-section">
+                    <h1>Welcome back, <span id="user-display-name"></span></h1>
+                    <p>Manage your submissions and profile</p>
+                </div>
+                <div class="quick-actions">
+                    <a href="submit-art.html" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Submit New Art
+                    </a>
+                </div>
+            </div>
+
+            <!-- Dashboard Stats -->
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="total-submissions">0</h3>
+                        <p>Total Submissions</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon approved">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="approved-submissions">0</h3>
+                        <p>Approved</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon pending">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="pending-submissions">0</h3>
+                        <p>Pending Review</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon rejected">
+                        <i class="fas fa-times-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="rejected-submissions">0</h3>
+                        <p>Rejected</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Tabs -->
+            <div class="dashboard-tabs">
+                <button class="tab-button active" onclick="showTab('submissions')">
+                    <i class="fas fa-image"></i> My Submissions
+                </button>
+                <button class="tab-button" onclick="showTab('profile')">
+                    <i class="fas fa-user"></i> Profile
+                </button>
+                <button class="tab-button artist-only" onclick="showTab('artist')" style="display: none;">
+                    <i class="fas fa-palette"></i> Artist Profile
+                </button>
+                <button class="tab-button" onclick="showTab('collections')">
+                    <i class="fas fa-bookmark"></i> Collections
+                </button>
+            </div>
+
+            <!-- Submissions Tab -->
+            <div id="submissions-tab" class="tab-content active">
+                <div class="tab-header">
+                    <h2>My Art Submissions</h2>
+                    <div class="tab-filters">
+                        <select id="submission-filter">
+                            <option value="all">All Submissions</option>
+                            <option value="approved">Approved</option>
+                            <option value="pending">Pending</option>
+                            <option value="rejected">Rejected</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="submissions-grid" id="submissions-grid">
+                    <!-- Submissions will be populated by JavaScript -->
+                </div>
+                <div class="empty-state" id="submissions-empty" style="display: none;">
+                    <i class="fas fa-image"></i>
+                    <h3>No submissions yet</h3>
+                    <p>Start sharing indigenous art by submitting your first piece</p>
+                    <a href="submit-art.html" class="btn btn-primary">Submit Art</a>
+                </div>
+            </div>
+
+            <!-- Profile Tab -->
+            <div id="profile-tab" class="tab-content">
+                <div class="tab-header">
+                    <h2>Profile Settings</h2>
+                </div>
+                <form id="profile-form" class="profile-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="profile-first-name">First Name</label>
+                            <input type="text" id="profile-first-name" name="first-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="profile-last-name">Last Name</label>
+                            <input type="text" id="profile-last-name" name="last-name" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="profile-username">Username</label>
+                        <input type="text" id="profile-username" name="username" required>
+                        <div class="help-text">This will be displayed publicly on your submissions</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="profile-email">Email Address</label>
+                        <input type="email" id="profile-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="profile-user-type">Account Type</label>
+                        <select id="profile-user-type" name="user-type">
+                            <option value="general">General Public</option>
+                            <option value="artist">Artist</option>
+                        </select>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Update Profile</button>
+                        <button type="button" class="btn btn-outline" onclick="showPasswordChange()">Change Password</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Artist Profile Tab -->
+            <div id="artist-tab" class="tab-content">
+                <div class="tab-header">
+                    <h2>Artist Profile</h2>
+                </div>
+                <form id="artist-form" class="artist-form">
+                    <div class="form-group">
+                        <label for="artist-bio">Artist Bio</label>
+                        <textarea id="artist-bio" name="artist-bio" rows="4" placeholder="Tell people about your artistic background and work..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="artist-website">Website</label>
+                        <input type="url" id="artist-website" name="website" placeholder="https://yourwebsite.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="artist-contact">Public Contact Information</label>
+                        <textarea id="artist-contact" name="contact" rows="2" placeholder="Email, social media, or other contact information you'd like to share publicly"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Update Artist Profile</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Collections Tab -->
+            <div id="collections-tab" class="tab-content">
+                <div class="tab-header">
+                    <h2>My Collections</h2>
+                    <button class="btn btn-primary" onclick="createCollection()">
+                        <i class="fas fa-plus"></i> New Collection
+                    </button>
+                </div>
+                <div class="collections-grid" id="collections-grid">
+                    <!-- Collections will be populated by JavaScript -->
+                </div>
+                <div class="empty-state" id="collections-empty" style="display: none;">
+                    <i class="fas fa-bookmark"></i>
+                    <h3>No collections yet</h3>
+                    <p>Create collections to organize your favorite artworks</p>
+                    <button class="btn btn-primary" onclick="createCollection()">Create Collection</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Password Change Modal -->
+    <div id="password-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Change Password</h3>
+                <button class="modal-close" onclick="closePasswordModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="password-change-form">
+                    <div class="form-group">
+                        <label for="current-password">Current Password</label>
+                        <input type="password" id="current-password" name="current-password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-password">New Password</label>
+                        <input type="password" id="new-password" name="new-password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-new-password">Confirm New Password</label>
+                        <input type="password" id="confirm-new-password" name="confirm-new-password" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" onclick="closePasswordModal()">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Update Password</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Collection Modal -->
+    <div id="collection-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="collection-modal-title">Create Collection</h3>
+                <button class="modal-close" onclick="closeCollectionModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="collection-form">
+                    <div class="form-group">
+                        <label for="collection-name">Collection Name</label>
+                        <input type="text" id="collection-name" name="collection-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="collection-description">Description</label>
+                        <textarea id="collection-description" name="collection-description" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="collection-public" name="collection-public">
+                            <span class="checkmark"></span>
+                            Make this collection public
+                        </label>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" onclick="closeCollectionModal()">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Collection</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Indigenous Art Atlas</h4>
+                    <p>Respectfully documenting and sharing indigenous art forms worldwide</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="browse.html">Browse Art</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="guidelines.html">Usage Guidelines</a></li>
+                        <li><a href="ethics.html">Ethical Considerations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="register.html">Join Us</a></li>
+                        <li><a href="submit-art.html">Submit Art</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cultural Guidelines</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Indigenous Art Atlas. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

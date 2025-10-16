@@ -1,0 +1,119 @@
+Indigenous Art Atlas
+This document provides an outline of the type of functionality, you and your team, must design and implement.  The intention is that you review the material presented here, and apply it to the assignment requirements outlined in the COMP9030-ASSIGNMENT repo.
+
+Indigenous Art Atlas
+The Indigenous Art Atlas is a website designed to serve as a community-driven database for tracking and sharing indigenous art in various real-world settings, ranging from ancient cave art to contemporary gallery pieces and public installations. The project emphasises core web development skills using fundamental technologies, alongside a crucial focus on ethical considerations and cultural sensitivity.
+
+You will be responsible for creating a full-stack web application that includes a public-facing interface for viewing art, a secure portal for registered users (general public, artists) to submit and manage art entries, and an administrator panel for content moderation and user management.
+
+Technology Stack and Constraints
+Frontend
+HTML: semantic and well-structured markup for all pages.
+CSS: advanced styling, complex layouts intended for responsive UI.
+JavaScript (vanilla): extensive use for dynamic content loading, form validation, interactive components. 
+Leafet.js: (Allowed for map integration) A lightweight JavaScript library for interactive maps.  You may use OpenStreetMap for tiles.  You can find tutorials for the use of Leaflet.js hereLinks to an external site.. 
+Backend
+PHP: robust server-side logic, secure user authentication and authorisation, complex database queries, transaction processing, and server side input validation.
+MySQL: for a normalised and efficient relational database. 
+No other frameworks or libraries (e.g., React, Node.js, Python frameworks, Bootstrap, jQuery, Laravel) are permitted.
+No external APIs beyond Leaflet.js and OpenStreetMap tiles.
+Core Website Requirements and Features (Mandatory)
+Your solution must implement the following features:
+
+Public/Visitor Features (No Login Required)
+ Homepage:
+Display a visually appealing introduction to the "Indigenous Art Atlas."
+Feature a prominent interactive map showcasing approved art locations (markers).
+Showcase a selection of recently added or featured art entries.
+Include links to "About Us," "Usage Guidelines," and "Contact Us" pages.
+Interactive Map Integration:
+ Display a map using Leaflet.js with markers for each approved art entry.
+Clicking on a marker should show a pop-up with the art title and a link to its full detail page.
+For sensitive locations, the marker should only show a general region, not the exact coordinates, or be omitted entirely based on admin settings.
+Browse Art Listings:
+ A dedicated page displaying all approved art entries in a gallery or list format.
+Each entry must display a thumbnail image, title, and a brief description.
+Ability to sort listings (e.g., by date added, title).
+Search & Filter Functionality:
+Keyword Search: Allow searching by art title, artist name, or keywords in the description.
+Categorical Filter: Filter by pre-defined art types (e.g., "Cave Art," "Mural") and periods (e.g., "Ancient," "Contemporary").
+Location Filter: Basic filtering by broader geographic regions (e.g., state/territory).
+All search and filter operations must update the displayed listings dynamically using AJAX.
+Art Detail Pages:
+A unique page for each art entry, displaying all submitted details.
+Multiple high-resolution images with a simple JavaScript image gallery/carousel.
+Comprehensive description, art type, estimated period, condition notes.
+Artist information (if known and public).
+An embedded, static map snippet showing the art's specific or general location (respecting sensitivity).
+Submission date and submitter's username (if not anonymous).
+Informational Pages:
+"About Us" page detailing the project's mission.
+"Usage Guidelines" outlining expected behaviour and content standards.
+"Ethical Considerations/Disclaimers" page, explicitly addressing cultural sensitivity, permission for contemporary art, and the non-commercial nature of the platform.
+Registered User Features (General Public & Artists - Login Required)
+User Registration & Login System:
+Secure registration form (username, email, password confirmation).
+Password must be hashed before storage (e.g., using password_hash() in PHP).
+Secure login form.
+PHP-based session management for maintaining login state.
+Users can choose their role during registration (General Public, Artist) or apply to be an Artist later.
+Submit New Art Entry:
+A multi-step or multi-section form accessible only to logged-in users.
+Art Details: Title, detailed description, select from pre-defined Art Type and Period categories, add Condition/Quality notes.
+Artist Information: Option to credit a known artist (if distinct from submitter). Artists can link submissions to their own profile.
+Location Details:
+Interactive map picker (Leaflet.js) to allow users to drop a pin and get latitude/longitude coordinates.
+Text fields for descriptive location notes (e.g., "Near the old bridge," "Inside Gallery X").
+Location Sensitivity Flag: A clear checkbox/dropdown (e.g., "This location is culturally sensitive / private land") that, if checked, flags the submission for admin review and potentially masks exact coordinates publicly.
+Image Uploads: Allow uploading multiple image files (JPEG, PNG). Server-side validation for file type and size. Images must be stored on the server, and their paths in the database.
+Client-side JavaScript validation for all required fields before submission.
+Manage My Submissions:
+A user dashboard showing all art entries submitted by the logged-in user.
+Display the approval status for each submission ("Pending Review," "Approved," "Rejected").
+Ability to Edit (update text details, change images) or Delete their own submissions.
+Artist Profile (for 'Artist' user type):
+Artists can update their bio and optionally provide public contact information.
+Their profile page lists all art entries they have submitted/attributed to themselves.
+Report Content:
+A mechanism on each art detail page for logged-in users to report inappropriate or inaccurate content. This should submit a report to the admin panel.
+Administrator Features (Admin Login Required)
+Admin Login:
+A separate, secure login for administrators (distinct from general user login).
+Admin Dashboard:
+Overview of key statistics (e.g., number of pending submissions, total users).
+Quick links to moderation queues.
+Art Submission Moderation:
+View a list of all pending art submissions awaiting review.
+For each submission: display all submitted details, including location data and images.
+Ability to Approve (make public), Reject (hide from public, with a reason), Edit (modify any detail), or Delete any art entry.
+Ability to override or adjust the location_sensitive_flag and set how the location is displayed publicly.
+User Management:
+View a list of all registered users.
+Ability to change user roles (e.g., promote 'General Public' to 'Artist' after verification).
+Ability to Activate/Deactivate (suspend) or Delete user accounts.
+Category/Tag Management:
+Interface to Add, Edit, or Delete art_types and art_periods.
+Stretch Goals
+These features introduce a higher level of complexity in design, implementation, and user experience.
+
+SG1: Advanced Interactive Map Features with Layer Control
+
+Beyond basic markers, allow users to toggle different "layers" of art on the map (e.g., "Ancient Art," "Contemporary Public Art," "Art by Specific Indigenous Nation - if applicable and culturally sensitive to display"). Implement a dynamic legend/checkbox control for these layers directly on the map interface. For sensitive locations, ensure the markers change appearance or are grouped more abstractly when their layer is active.
+SG2: User-Generated Collections/Playlists of Art
+
+Allow registered users to create and manage their own "collections" or "playlists" of favorite art entries. Users should be able to add/remove art from their collections, view all their collections, and optionally make a collection public (read-only for others).
+SG3: Dynamic Content Filtering and Sorting with Faceted Navigation
+
+Enhance the browse/search functionality to include "faceted navigation" where available filters (e.g., Art Type, Period, Region, Artist) also display the number of results for each filter option. As filters are applied, the counts for the remaining filters dynamically update to reflect the current subset of results. All operations must use AJAX for a seamless experience.
+Mastery Goals
+These goals represent a significant leap in complexity, requiring advanced algorithmic thinking, sophisticated database design, and exceptional attention to edge cases and user experience.
+
+MG1: Comprehensive Version Control & Audit Trail for Art Entries
+
+For every edit made to an approved art entry (by the original submitter or an administrator), automatically save a historical version of the entry's textual data (title, description, details). Administrators should have a dedicated interface on each art detail page to view a chronological "history" of changes, compare different versions, and potentially "rollback" to a previous version of the text. Include an audit log of who made the change and when.
+MG2: Intelligent Location Anonymisation & Admin Overrides
+
+Implement a multi-tiered system for location sensitivity. Beyond a simple flag, allow admins to define levels of sensitivity (e.g., "Exact Coordinates," "General Locality," "Region Only," "Completely Hidden"). Based on the level, the map should dynamically adjust (e.g., display a larger circle for general locality, only show region marker, or no map snippet at all). Admins must be able to define custom, predefined "sensitive regions" on a map (e.g., drawing polygons) where all art within that polygon defaults to a higher sensitivity level unless explicitly overridden.
+MG3: Event-Driven Reporting & Customisable Admin Alerts
+
+Implement an event-driven reporting system for critical actions. For instance, when a new art piece is submitted, or content is reported, or a user role changes, log a detailed "event." Administrators should have a dedicated page where they can configure what types of events they want to be alerted about (e.g., email notification for new submissions, in-app notification for reported content). The system should then generate these alerts based on the configurations.

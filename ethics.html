@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethical Considerations - Indigenous Art Atlas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-map-marked-alt"></i>
+                <span>Indigenous Art Atlas</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="browse.html" class="nav-link">Browse Art</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="guidelines.html" class="nav-link">Guidelines</a>
+                <a href="ethics.html" class="nav-link active">Ethics</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <div class="nav-auth">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="register.html" class="btn btn-primary">Register</a>
+            </div>
+            <div class="nav-user" style="display: none;">
+                <div class="user-dropdown">
+                    <button class="user-button">
+                        <i class="fas fa-user"></i>
+                        <span class="username"></span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                        <a href="submit-art.html"><i class="fas fa-plus"></i> Submit Art</a>
+                        <div class="admin-link" style="display: none;">
+                            <a href="admin.html"><i class="fas fa-cog"></i> Admin Panel</a>
+                        </div>
+                        <hr>
+                        <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Content -->
+    <main class="ethics-main">
+        <!-- Hero Section -->
+        <section class="page-hero">
+            <div class="container">
+                <h1>Ethical Considerations</h1>
+                <p class="hero-subtitle">Our commitment to ethical practices in documenting and sharing indigenous art</p>
+            </div>
+        </section>
+
+        <!-- Ethics Content -->
+        <section class="ethics-content">
+            <div class="container">
+                <!-- Introduction -->
+                <div class="ethics-intro">
+                    <h2>Our Ethical Framework</h2>
+                    <p>The Indigenous Art Atlas operates under a comprehensive ethical framework that prioritizes respect, consent, and cultural sensitivity. We recognize that indigenous art is not merely aesthetic objects but carriers of deep cultural meaning, spiritual significance, and traditional knowledge that must be treated with the utmost respect.</p>
+                    
+                    <div class="ethics-principles">
+                        <div class="principle">
+                            <i class="fas fa-hands-helping"></i>
+                            <h3>Community Consent</h3>
+                            <p>We seek explicit consent from relevant indigenous communities before featuring their cultural expressions</p>
+                        </div>
+                        <div class="principle">
+                            <i class="fas fa-shield-alt"></i>
+                            <h3>Cultural Protection</h3>
+                            <p>We actively protect sacred and sensitive cultural information from inappropriate exposure</p>
+                        </div>
+                        <div class="principle">
+                            <i class="fas fa-balance-scale"></i>
+                            <h3>Equitable Representation</h3>
+                            <p>We strive for authentic, respectful representation that empowers indigenous voices</p>
+                        </div>
+                        <div class="principle">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h3>Educational Purpose</h3>
+                            <p>All content serves educational goals and promotes cultural understanding and appreciation</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Sections -->
+                <div class="ethics-sections">
+                    <!-- Cultural Sensitivity -->
+                    <section class="ethics-section">
+                        <h2><i class="fas fa-heart"></i> Cultural Sensitivity and Respect</h2>
+                        <div class="section-content">
+                            <h3>Understanding Sacred and Secular</h3>
+                            <p>Indigenous art exists along a spectrum from secular creative expression to deeply sacred religious and ceremonial objects. We acknowledge that some art forms are:</p>
+                            <ul>
+                                <li><strong>Sacred Objects:</strong> Items with religious or ceremonial significance that may require special protocols</li>
+                                <li><strong>Traditional Knowledge:</strong> Art that carries cultural teachings, stories, or proprietary information</li>
+                                <li><strong>Gender-Specific:</strong> Art that may be appropriate only for certain genders to view or handle</li>
+                                <li><strong>Community-Specific:</strong> Art that belongs to specific communities and should not be shared without permission</li>
+                            </ul>
+
+                            <h3>Avoiding Cultural Appropriation</h3>
+                            <div class="ethics-warning">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <div>
+                                    <h4>Important Distinction</h4>
+                                    <p>We differentiate between cultural appreciation (respectful engagement and learning) and cultural appropriation (unauthorized use or misrepresentation of cultural elements). Our platform promotes appreciation while actively preventing appropriation.</p>
+                                </div>
+                            </div>
+
+                            <h3>Language and Terminology</h3>
+                            <ul>
+                                <li>Use terms preferred by the communities themselves</li>
+                                <li>Avoid outdated or potentially offensive terminology</li>
+                                <li>Recognize that "indigenous" encompasses diverse cultures, not a monolithic group</li>
+                                <li>When uncertain about appropriate terminology, consult with community representatives</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Consent and Permission -->
+                    <section class="ethics-section">
+                        <h2><i class="fas fa-handshake"></i> Consent and Permission Protocols</h2>
+                        <div class="section-content">
+                            <h3>Types of Consent Required</h3>
+                            <div class="consent-types">
+                                <div class="consent-type">
+                                    <h4>Artist Consent</h4>
+                                    <p>Permission from the artist or their estate when the creator is known and artwork is contemporary</p>
+                                </div>
+                                <div class="consent-type">
+                                    <h4>Community Consent</h4>
+                                    <p>Approval from relevant cultural authorities or community leaders for traditional or culturally significant works</p>
+                                </div>
+                                <div class="consent-type">
+                                    <h4>Institutional Consent</h4>
+                                    <p>Permission from museums, galleries, or cultural institutions that house the artwork</p>
+                                </div>
+                                <div class="consent-type">
+                                    <h4>Legal Consent</h4>
+                                    <p>Compliance with copyright laws and property rights where the artwork is located</p>
+                                </div>
+                            </div>
+
+                            <h3>When Consent Cannot Be Obtained</h3>
+                            <p>In cases where specific consent cannot be obtained (such as with ancient art of unknown origin), we:</p>
+                            <ul>
+                                <li>Consult with relevant cultural experts and community representatives</li>
+                                <li>Apply extra scrutiny during the review process</li>
+                                <li>Include disclaimers about the limitations of our knowledge</li>
+                                <li>Remain open to feedback and requests for removal from community members</li>
+                            </ul>
+
+                            <h3>Ongoing Consent</h3>
+                            <p>We recognize that consent is not a one-time agreement but an ongoing relationship. Communities may withdraw consent, and we respect such decisions by promptly removing content upon request.</p>
+                        </div>
+                    </section>
+
+                    <!-- Intellectual Property -->
+                    <section class="ethics-section">
+                        <h2><i class="fas fa-copyright"></i> Intellectual Property and Cultural Rights</h2>
+                        <div class="section-content">
+                            <h3>Beyond Western Copyright</h3>
+                            <p>While Western copyright law provides some protections, we recognize that indigenous intellectual property rights extend beyond traditional legal frameworks to include:</p>
+                            <ul>
+                                <li><strong>Collective Ownership:</strong> Art that belongs to entire communities rather than individuals</li>
+                                <li><strong>Sacred Knowledge:</strong> Information that has spiritual or ceremonial significance</li>
+                                <li><strong>Traditional Designs:</strong> Patterns and motifs that carry cultural meaning and identity</li>
+                                <li><strong>Oral Traditions:</strong> Stories and knowledge passed down through generations</li>
+                            </ul>
+
+                            <h3>Attribution and Credit</h3>
+                            <ul>
+                                <li>Provide accurate attribution to artists when known</li>
+                                <li>Credit cultural communities and traditions appropriately</li>
+                                <li>Acknowledge when information is incomplete or uncertain</li>
+                                <li>Respect requests for anonymity or limited attribution</li>
+                            </ul>
+
+                            <h3>Commercial Use Restrictions</h3>
+                            <div class="commercial-policy">
+                                <i class="fas fa-ban"></i>
+                                <div>
+                                    <h4>Non-Commercial Platform</h4>
+                                    <p>The Indigenous Art Atlas is strictly non-commercial. We do not permit the use of our platform or its content for commercial purposes, including sales, marketing, or profit-generating activities.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Data Protection -->
+                    <section class="ethics-section">
+                        <h2><i class="fas fa-lock"></i> Data Protection and Privacy</h2>
+                        <div class="section-content">
+                            <h3>Location Sensitivity</h3>
+                            <p>We implement multiple levels of location protection to respect cultural sensitivities and prevent harm:</p>
+                            <ul>
+                                <li><strong>Exact Coordinates:</strong> For non-sensitive public art locations</li>
+                                <li><strong>General Region:</strong> For moderately sensitive locations</li>
+                                <li><strong>Cultural Area Only:</strong> For sensitive sites requiring broad geographic context</li>
+                                <li><strong>No Location Data:</strong> For highly sensitive or protected sites</li>
+                            </ul>
+
+                            <h3>User Privacy</h3>
+                            <ul>
+                                <li>We protect user personal information according to privacy laws</li>
+                                <li>Users can choose their level of public visibility</li>
+                                <li>We do not share user data with third parties without explicit consent</li>
+                                <li>Users have the right to request deletion of their data</li>
+                            </ul>
+
+                            <h3>Content Security</h3>
+                            <ul>
+                                <li>Secure storage of submitted images and information</li>
+                                <li>Regular backups to prevent data loss</li>
+                                <li>Access controls limiting who can view sensitive submissions</li>
+                                <li>Audit trails for all administrative actions</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Community Engagement -->
+                    <section class="ethics-section">
+                        <h2><i class="fas fa-users"></i> Community Engagement and Consultation</h2>
+                        <div class="section-content">
+                            <h3>Advisory Relationships</h3>
+                            <p>We actively seek ongoing relationships with indigenous communities, cultural institutions, and academic experts to guide our practices and policies.</p>
+
+                            <h3>Feedback Mechanisms</h3>
+                            <ul>
+                                <li>Regular community consultation sessions</li>
+                                <li>Open channels for feedback and concerns</li>
+                                <li>Transparent response processes for community requests</li>
+                                <li>Annual review of policies with community input</li>
+                            </ul>
+
+                            <h3>Capacity Building</h3>
+                            <p>We support indigenous communities in digital preservation and cultural documentation by:</p>
+                            <ul>
+                                <li>Providing training and resources for community-led documentation</li>
+                                <li>Supporting indigenous-led cultural preservation initiatives</li>
+                                <li>Facilitating connections between communities and preservation experts</li>
+                                <li>Advocating for indigenous rights in digital heritage spaces</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Responsibility and Accountability -->
+                    <section class="ethics-section">
+                        <h2><i class="fas fa-gavel"></i> Responsibility and Accountability</h2>
+                        <div class="section-content">
+                            <h3>Our Commitments</h3>
+                            <ul>
+                                <li><strong>Transparency:</strong> Clear policies and open communication about our practices</li>
+                                <li><strong>Responsiveness:</strong> Prompt action on community concerns and feedback</li>
+                                <li><strong>Continuous Learning:</strong> Ongoing education and improvement of our practices</li>
+                                <li><strong>Cultural Humility:</strong> Recognition of our limitations and commitment to learning</li>
+                            </ul>
+
+                            <h3>Accountability Measures</h3>
+                            <ul>
+                                <li>Regular audits of our content and practices</li>
+                                <li>Community oversight and advisory roles</li>
+                                <li>Public reporting on our activities and decisions</li>
+                                <li>Independent review processes for complex cultural issues</li>
+                            </ul>
+
+                            <h3>Error Correction</h3>
+                            <p>When mistakes occur, we commit to:</p>
+                            <ul>
+                                <li>Acknowledging errors publicly and honestly</li>
+                                <li>Taking immediate corrective action</li>
+                                <li>Learning from mistakes to prevent recurrence</li>
+                                <li>Making amends to affected communities when appropriate</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Educational Goals -->
+                    <section class="ethics-section">
+                        <h2><i class="fas fa-graduation-cap"></i> Educational Goals and Impact</h2>
+                        <div class="section-content">
+                            <h3>Promoting Understanding</h3>
+                            <p>Our educational goals include:</p>
+                            <ul>
+                                <li>Increasing awareness of indigenous artistic traditions and their diversity</li>
+                                <li>Challenging stereotypes and misconceptions about indigenous cultures</li>
+                                <li>Highlighting the ongoing vitality of indigenous artistic expression</li>
+                                <li>Demonstrating the connections between art, culture, and identity</li>
+                            </ul>
+
+                            <h3>Responsible Presentation</h3>
+                            <ul>
+                                <li>Providing cultural context for artistic works</li>
+                                <li>Acknowledging the limitations of our knowledge</li>
+                                <li>Encouraging further learning and engagement</li>
+                                <li>Connecting users with authentic cultural resources</li>
+                            </ul>
+
+                            <h3>Impact Assessment</h3>
+                            <p>We regularly assess our impact to ensure we are meeting our educational goals while maintaining ethical standards:</p>
+                            <ul>
+                                <li>Monitoring how our content is used and shared</li>
+                                <li>Gathering feedback from educators and cultural institutions</li>
+                                <li>Tracking engagement with different types of content</li>
+                                <li>Evaluating our success in promoting cultural understanding</li>
+                            </ul>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Disclaimers -->
+                <div class="ethics-disclaimers">
+                    <h2>Important Disclaimers</h2>
+                    
+                    <div class="disclaimer-card">
+                        <h3><i class="fas fa-info-circle"></i> Limitations of Knowledge</h3>
+                        <p>While we strive for accuracy, we acknowledge that our understanding of indigenous art and cultures is limited and evolving. We encourage users to seek additional sources and engage directly with indigenous communities for deeper understanding.</p>
+                    </div>
+
+                    <div class="disclaimer-card">
+                        <h3><i class="fas fa-exclamation-triangle"></i> Cultural Complexity</h3>
+                        <p>Indigenous cultures are diverse and complex. Our platform cannot capture the full richness and nuance of any culture. We present information as a starting point for learning, not as a comprehensive representation.</p>
+                    </div>
+
+                    <div class="disclaimer-card">
+                        <h3><i class="fas fa-users"></i> Community Authority</h3>
+                        <p>Indigenous communities are the ultimate authorities on their own cultural expressions. We defer to community knowledge and wishes, and we encourage users to do the same in their engagement with indigenous art and culture.</p>
+                    </div>
+
+                    <div class="disclaimer-card">
+                        <h3><i class="fas fa-hand-paper"></i> Non-Commercial Purpose</h3>
+                        <p>This platform is intended solely for educational and cultural preservation purposes. Any commercial use of the content or platform is strictly prohibited and may violate both our terms of service and indigenous intellectual property rights.</p>
+                    </div>
+                </div>
+
+                <!-- Contact Section -->
+                <div class="ethics-contact">
+                    <div class="contact-card">
+                        <h3><i class="fas fa-envelope"></i> Questions or Concerns?</h3>
+                        <p>If you have questions about our ethical practices, concerns about specific content, or suggestions for improvement, please contact us. We welcome dialogue and feedback from all stakeholders.</p>
+                        <div class="contact-options">
+                            <a href="contact.html" class="btn btn-primary">Contact Us</a>
+                            <a href="guidelines.html" class="btn btn-outline">View Guidelines</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Indigenous Art Atlas</h4>
+                    <p>Respectfully documenting and sharing indigenous art forms worldwide</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="browse.html">Browse Art</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="guidelines.html">Usage Guidelines</a></li>
+                        <li><a href="ethics.html">Ethical Considerations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="register.html">Join Us</a></li>
+                        <li><a href="submit-art.html">Submit Art</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cultural Guidelines</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Indigenous Art Atlas. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
